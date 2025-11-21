@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://codjs0lecqu07"]
+
+[ext_resource type="Script" uid="uid://c3dg1j6u4xifx" path="res://scenes/Spawner/spawner.gd" id="1_u111k"]
+
+[node name="Spawner" type="Node"]
+script = ExtResource("1_u111k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

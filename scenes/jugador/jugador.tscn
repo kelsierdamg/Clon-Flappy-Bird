@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://8s5xc58c12os"]
+
+[ext_resource type="Script" uid="uid://dqpxluo8of7g3" path="res://scenes/jugador/jugador.gd" id="1_1d7gi"]
+[ext_resource type="Texture2D" uid="uid://bvntpsok5a8x5" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue1.png" id="1_ueyq7"]
+[ext_resource type="Texture2D" uid="uid://bokghwlyvels1" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue2.png" id="2_1d7gi"]
+[ext_resource type="Texture2D" uid="uid://087voyngu1by" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue3.png" id="3_f0vko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6htac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ueyq7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ueyq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1d7gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f0vko")
+}],
+"loop": true,
+"name": &"volar",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ku1a3"]
+radius = 38.209946
+
+[node name="Jugador" type="CharacterBody2D"]
+script = ExtResource("1_1d7gi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6htac")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.48882663
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ku1a3")

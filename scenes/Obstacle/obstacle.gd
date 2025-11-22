@@ -1,4 +1,5 @@
 extends Node2D
+class_name Obstacle
 
 signal player_crashed
 
@@ -6,6 +7,9 @@ signal player_crashed
 
 func _process(delta: float) -> void:
 	position.x -= move_speed * delta
+	
+func set_speed(value: float) -> void:
+	move_speed = value
 
 func _on_area_body_entered(body: Node2D) -> void:
 	player_crashed.emit()

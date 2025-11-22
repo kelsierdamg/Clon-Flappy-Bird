@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg515hj3ur3ce"]
+
+[ext_resource type="Script" uid="uid://cqr8fpq1busa1" path="res://scenes/ground.gd" id="1_mi8v4"]
+[ext_resource type="Texture2D" uid="uid://cvjp578yskg1i" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/groundSnow.png" id="2_lmksl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5yvf"]
+size = Vector2(807, 71)
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_mi8v4")
+
+[node name="Ground1" type="Area2D" parent="."]
+position = Vector2(407, 815)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground1"]
+texture = ExtResource("2_lmksl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_w5yvf")
+
+[node name="Ground2" type="Area2D" parent="."]
+position = Vector2(1213, 815)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+texture = ExtResource("2_lmksl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_w5yvf")
+
+[connection signal="body_entered" from="Ground1" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="Ground2" to="." method="_on_ground_body_entered"]

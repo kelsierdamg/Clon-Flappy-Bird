@@ -8,6 +8,7 @@ signal _on_player_crash
 @onready var ground_1: Area2D = $Ground1
 @onready var ground_2: Area2D = $Ground2
 @onready var sprite_2d: Sprite2D = $Ground1/Sprite2D
+@onready var die_sound: AudioStreamPlayer = $DieSound
 
 var width: float
 
@@ -30,3 +31,4 @@ func _on_ground_body_entered(body: Node2D) -> void:
 	var jugador := body as Jugador
 	jugador.stop_movement()
 	jugador.stop_gravity()
+	die_sound.play()

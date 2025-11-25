@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://jjtuyarvxb0o"]
+[gd_scene load_steps=7 format=3 uid="uid://jjtuyarvxb0o"]
 
 [ext_resource type="Texture2D" uid="uid://cqejf74ebsjqx" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/rockSnowDown.png" id="1_8tac7"]
 [ext_resource type="Script" uid="uid://b6wjfqila336l" path="res://scenes/Obstacle/obstacle.gd" id="1_qfcfb"]
 [ext_resource type="Texture2D" uid="uid://dtfi2ha7ihubr" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/rockSnow.png" id="2_qfcfb"]
+[ext_resource type="AudioStream" uid="uid://btxwdnahv1gc" path="res://Flappy+Bird+Clone+Assets/Assets/Audio/sfx_hit.wav" id="4_0famd"]
+[ext_resource type="AudioStream" uid="uid://c6ebci6361y4v" path="res://Flappy+Bird+Clone+Assets/Assets/Audio/sfx_point.wav" id="5_o1ucm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfcfb"]
+size = Vector2(8.5, 94)
 
 [node name="Obstacle" type="Node2D"]
 scale = Vector2(2, 2)
@@ -30,6 +35,21 @@ polygon = PackedVector2Array(-54, 118, 53, 118, 16, -119, 7, -118)
 position = Vector2(64, -83.5)
 rect = Rect2(-10, -46, 20, 86)
 
+[node name="Score" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+position = Vector2(27.5, -87)
+shape = SubResource("RectangleShape2D_qfcfb")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0famd")
+bus = &"SFX"
+
+[node name="PointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o1ucm")
+bus = &"SFX"
+
 [connection signal="body_entered" from="TopArea" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="BottomArea" to="." method="_on_area_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Score" to="." method="_on_score_body_entered"]

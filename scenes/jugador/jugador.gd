@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Jugador
 
 signal on_game_started
+@onready var jump_audio: AudioStreamPlayer = $jumpAudio
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 @export var gravedad := 1000.0
 @export var fuerza_salto := 400.0
@@ -31,6 +34,8 @@ func _physics_process(delta: float) -> void:
 func salto() -> void:
 	velocity.y = -fuerza_salto
 	rotation = deg_to_rad(-30)
+	animated_sprite_2d.play("volar")
+	jump_audio.play()
 	
 func rotar_jugador() -> void:
 	if velocity.y > 0 and rad_to_deg(rotation) < 90:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3dg1j6u4xifx" path="res://scenes/Spawner/spawner.gd" id="1_u111k"]
 
-[node name="Spawner" type="Node"]
+[node name="Spawner" type="Node2D"]
 script = ExtResource("1_u111k")
 
 [node name="Timer" type="Timer" parent="."]

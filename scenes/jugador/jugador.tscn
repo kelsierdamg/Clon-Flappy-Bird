@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8s5xc58c12os"]
+[gd_scene load_steps=8 format=3 uid="uid://8s5xc58c12os"]
 
 [ext_resource type="Script" uid="uid://dqpxluo8of7g3" path="res://scenes/jugador/jugador.gd" id="1_1d7gi"]
 [ext_resource type="Texture2D" uid="uid://bvntpsok5a8x5" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue1.png" id="1_ueyq7"]
 [ext_resource type="Texture2D" uid="uid://bokghwlyvels1" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue2.png" id="2_1d7gi"]
 [ext_resource type="Texture2D" uid="uid://087voyngu1by" path="res://Flappy+Bird+Clone+Assets/Assets/Sprites/Planes/planeBlue3.png" id="3_f0vko"]
+[ext_resource type="AudioStream" uid="uid://dwmtu5w1krorr" path="res://Flappy+Bird+Clone+Assets/Assets/Audio/sfx_wing.wav" id="5_f0vko"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6htac"]
 animations = [{
@@ -44,3 +45,7 @@ frame_progress = 0.48882663
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ku1a3")
+
+[node name="jumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_f0vko")
+bus = &"SFX"

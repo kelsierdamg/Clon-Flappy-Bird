@@ -2,6 +2,7 @@ extends Node
 class_name Spawner
 
 signal obstacle_crash
+signal player_score
 
 const OBSTACLE = preload("res://scenes/Obstacle/obstacle.tscn")
 
@@ -10,12 +11,13 @@ const OBSTACLE = preload("res://scenes/Obstacle/obstacle.tscn")
 func spawn_obstacle() -> void:
 	var obs_instance: Obstacle = OBSTACLE.instantiate()
 	obs_instance.player_crashed.connect(_player_crashed)
+	obs_instance.player_scored.connect(_player_scored)
 	
 	var viewport: Viewport = get_viewport()
 	obs_instance.position.x = viewport.get_visible_rect().end.x + 150
 	
 	var half_height = viewport.size.y / 2
-	obs_instance.position.y = randf_range(half_height + 240, half_height -50)
+	obs_instance.position.y = randf_range(half_height + 200, half_height + 150)
 	
 	add_child(obs_instance)
 
@@ -26,6 +28,9 @@ func stop_obstacles() -> void:
 	
 func _on_timer_timeout() -> void:
 	spawn_obstacle()
+	
+func _player_scored() -> void:
+	player_score.emit()
 	
 func _player_crashed() -> void:
 	obstacle_crash.emit()
